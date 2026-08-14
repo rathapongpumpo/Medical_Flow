@@ -1,0 +1,17 @@
+/* components.css - Main entry for all UI components */
+@import url('components/shell.css');
+@import url('components/buttons.css');
+@import url('components/forms.css');
+@import url('components/queue-card.css');
+@import url('components/status-chip.css');
+@import url('components/drawer.css');
+@import url('components/operational-board.css');
+
+/* --- State Badges (Semantic Operational Ramp) --- */
+.mf-badge-inert  { background-color: hsla(var(--state-inert) / 0.1); color: hsl(var(--state-inert)); border: 1px solid hsla(var(--state-inert) / 0.2); }
+.mf-badge-booked { background-color: hsla(var(--state-booked) / 0.1); color: hsl(var(--state-booked)); border: 1px solid hsla(var(--state-booked) / 0.2); }
+.mf-badge-queued { background-color: hsla(var(--state-queued) / 0.1); color: hsl(var(--state-queued)); border: 1px solid hsla(var(--state-queued) / 0.2); }
+.mf-badge-active { background-color: hsla(var(--state-active) / 0.1); color: hsl(var(--state-active)); border: 1px solid hsla(var(--state-active) / 0.2); }
+.mf-badge-done   { background-color: hsla(var(--state-done) / 0.1); color: hsl(var(--state-done)); border: 1px solid hsla(var(--state-done) / 0.2); }
+.mf-badge-alert  { background-color: hsla(var(--state-alert) / 0.1); color: hsl(var(--state-alert)); border: 1px solid hsla(var(--state-alert) / 0.2); }
+

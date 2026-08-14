@@ -1,0 +1,93 @@
+/* drawer.css - Material Design 3 (MD3) Drawers & Modals */
+
+.mf-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-5);
+    background-color: var(--md-sys-color-surface-container-high);
+}
+
+.mf-drawer-title {
+    margin: 0;
+    font-family: var(--md-sys-typescale-display-large-font);
+    font-size: var(--md-sys-typescale-headline-small-size);
+    font-weight: 400; /* MD3 Dialog titles are usually 400 */
+    color: var(--md-sys-color-on-surface);
+}
+
+.mf-drawer-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--md-sys-color-on-surface-variant);
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--md-sys-shape-corner-full);
+    position: relative;
+}
+
+.mf-drawer-close::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+    border-radius: inherit;
+    transition: opacity var(--transition-fast);
+}
+
+.mf-drawer-close:hover::after {
+    opacity: 0.08;
+}
+
+.mf-drawer-body {
+    padding: var(--space-5);
+    overflow-y: auto;
+    flex: 1;
+    background-color: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.mf-drawer-footer {
+    padding: var(--space-4) var(--space-5);
+    background-color: var(--md-sys-color-surface-container-high);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+}
+
+/* Base Modal Styling (MD3 Dialog) */
+.mf-modal {
+    background: var(--md-sys-color-surface-container-high); /* MD3 Dialog background */
+    border-radius: var(--md-sys-shape-corner-extra-large); /* MD3 Extra Large shape for dialogs */
+    box-shadow: var(--md-sys-elevation-level3); /* MD3 Dialog elevation */
+    max-width: 560px;
+    width: 90%;
+    margin: 10vh auto;
+    display: flex;
+    flex-direction: column;
+    animation: modal-fade-in var(--transition-base) forwards;
+    overflow: hidden;
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.mf-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(220, 20%, 10%, 0.4);
+    z-index: 1999;
+    /* Removed opacity: 0 and pointer-events: none to allow JS display toggling to work properly */
+}

@@ -1,0 +1,73 @@
+/* status-chip.css - Material Design 3 (MD3) Chips & Badges - FORMAL RAMP */
+
+.mf-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    height: 32px;
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    border-radius: var(--md-sys-shape-corner-small);
+    border: 1px solid transparent;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+/* Operational State Ramp Chips */
+.mf-chip-inert {
+    background-color: hsla(var(--state-inert) / 0.1);
+    color: hsl(var(--state-inert));
+    border-color: hsla(var(--state-inert) / 0.2);
+}
+
+.mf-chip-booked {
+    background-color: hsla(var(--state-booked) / 0.1);
+    color: hsl(var(--state-booked));
+    border-color: hsla(var(--state-booked) / 0.2);
+}
+
+.mf-chip-queued {
+    background-color: hsla(var(--state-queued) / 0.1);
+    color: hsl(var(--state-queued));
+    border-color: hsla(var(--state-queued) / 0.2);
+}
+
+.mf-chip-active {
+    background-color: hsla(var(--state-active) / 0.1);
+    color: hsl(var(--state-active));
+    border-color: hsla(var(--state-active) / 0.2);
+}
+
+.mf-chip-done {
+    background-color: hsla(var(--state-done) / 0.1);
+    color: hsl(var(--state-done));
+    border-color: hsla(var(--state-done) / 0.2);
+}
+
+.mf-chip-alert {
+    background-color: hsla(var(--state-alert) / 0.1);
+    color: hsl(var(--state-alert));
+    border-color: hsla(var(--state-alert) / 0.2);
+}
+
+/* Badge for notifications */
+.mf-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    min-width: 20px;
+    height: 20px;
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: 500;
+    line-height: 1;
+    border-radius: var(--md-sys-shape-corner-medium);
+}
+
+
+/* Attribute-based chip colors (used by dynamic data like reports) */
+.mf-chip[data-status="completed"] { background-color: hsla(var(--state-done) / 0.1); color: hsl(var(--state-done)); border-color: hsla(var(--state-done) / 0.2); }
+.mf-chip[data-status="active"], .mf-chip[data-status="in_progress"] { background-color: hsla(var(--state-active) / 0.1); color: hsl(var(--state-active)); border-color: hsla(var(--state-active) / 0.2); }
+

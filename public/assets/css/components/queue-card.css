@@ -1,0 +1,111 @@
+/* queue-card.css - Material Design 3 (MD3) Cards */
+
+.mf-queue-card {
+    background-color: var(--md-sys-color-surface-container-low);
+    border: none;
+    border-radius: var(--md-sys-shape-corner-medium); /* MD3 Medium shape for cards */
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+    box-shadow: var(--md-sys-elevation-level1);
+    transition: box-shadow var(--transition-base), transform var(--transition-fast), background-color var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* State Layers for Cards */
+.mf-queue-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--md-sys-color-on-surface);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.mf-queue-card:hover::after {
+    opacity: 0.08;
+}
+
+.mf-queue-card:active::after {
+    opacity: 0.12;
+}
+
+.mf-queue-card:hover {
+    box-shadow: var(--md-sys-elevation-level2); /* Elevate on hover */
+    transform: translateY(-2px);
+}
+
+.mf-queue-card:active {
+    box-shadow: var(--md-sys-elevation-level1);
+    transform: translateY(0);
+}
+
+/* Priority Indicators (using left border or subtle background tint instead of solid block) */
+.mf-queue-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color var(--transition-fast);
+}
+
+.mf-queue-card[data-priority="1"]::before { background-color: var(--md-sys-color-error); }
+.mf-queue-card[data-priority="2"]::before { background-color: var(--color-warning-base); }
+.mf-queue-card[data-priority="3"]::before { background-color: var(--color-info-base); }
+.mf-queue-card[data-priority="4"]::before { background-color: var(--color-success-base); }
+.mf-queue-card[data-priority="5"]::before { background-color: var(--md-sys-color-outline-variant); }
+
+.mf-queue-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mf-queue-number {
+    font-family: var(--md-sys-typescale-display-large-font);
+    font-size: var(--md-sys-typescale-headline-large-size);
+    font-weight: 700;
+    color: var(--md-sys-color-on-surface);
+    margin: 0;
+    letter-spacing: 0;
+}
+
+[data-theme="alternate"] .mf-queue-number {
+    color: var(--md-sys-color-on-surface);
+}
+
+.mf-queue-time {
+    font-size: var(--md-sys-typescale-label-small-size);
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 500;
+}
+
+.mf-queue-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.mf-queue-patient {
+    font-weight: var(--md-sys-typescale-title-medium-weight);
+    color: var(--md-sys-color-on-surface);
+    font-size: var(--md-sys-typescale-title-medium-size);
+}
+
+.mf-queue-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-1);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--md-sys-color-outline-variant); /* Solid thin line instead of dashed */
+}

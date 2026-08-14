@@ -1,0 +1,18 @@
+/* room-board.css - Material Design 3 (MD3) */
+
+.mf-room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.mf-room-card {
+    background-color: var(--md-sys-color-surface-container-low);
+    border: none;
+    border-radius: var(--md-sys-shape-corner-medium);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: var(--md-sys-elevation-level1);
+}

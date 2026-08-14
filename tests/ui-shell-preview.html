@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Shell Preview</title>
+    <!-- Use existing CSS -->
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <!-- Required for some components without writing inline styles inside components -->
+    <style>
+        .mf-toast { transition: opacity 0.25s ease; }
+    </style>
+</head>
+<body>
+    <div id="app-root">
+        <!-- Rendered by JS -->
+    </div>
+
+    <script type="module">
+        import { AppHeader, AppNavigation, GlobalStatus } from './assets/js/presentation/components/app-shell.js';
+        import { LoadingState, EmptyState, ErrorState, OfflineState, PermissionState, ConflictState } from './assets/js/presentation/components/ui-states.js';
+        import { ToastNotification, ModalDialog, Drawer, ConfirmationDialog } from './assets/js/presentation/components/ui-patterns.js';
+        import { DataTable, FormFields, StatusPrimitives } from './assets/js/presentation/components/data-patterns.js';
+
+        // 1. App Shell
+        const root = document.getElementById('app-root');
+        
+        const shell = document.createElement('div');
+        shell.className = 'mf-app-shell';
+        
+        const sidebar = document.createElement('aside');
+        sidebar.className = 'mf-sidebar';
+        sidebar.id = 'sidebar-container';
+        
+        const mainWrapper = document.createElement('div');
+        mainWrapper.className = 'mf-main-wrapper';
+        
+        const headerContainer = document.createElement('div');
+        headerContainer.id = 'header-container';
+        
+        const globalStatusContainer = document.createElement('div');
+        globalStatusContainer.id = 'global-status-container';
+        
+        const mainContent = document.createElement('main');
+        mainContent.className = 'mf-main-content';
+        mainContent.id = 'main-content';
+        mainContent.setAttribute('role', 'main');
+        
+        // Skip link
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.textContent = 'Skip to main content';
+        skipLink.style.position = 'absolute';
+        skipLink.style.left = '-9999px';
+        skipLink.addEventListener('focus', () => { skipLink.style.left = '10px'; skipLink.style.top = '10px'; skipLink.style.zIndex = '9999'; });
+        skipLink.addEventListener('blur', () => { skipLink.style.left = '-9999px'; });
+        document.body.insertBefore(skipLink, root);
+
+        mainWrapper.appendChild(headerContainer);
+        mainWrapper.appendChild(globalStatusContainer);
+        mainWrapper.appendChild(mainContent);
+        
+        shell.appendChild(sidebar);
+        shell.appendChild(mainWrapper);
+        root.appendChild(shell);
+        
+        // State variables
+        let isDark = false;
+        let isSidebarOpen = false;
+
+        // Header
+        const header = new AppHeader();
+        headerContainer.appendChild(header.render({
+            title: 'Medical Flow Design Preview',
+            user: { name: 'Staff User' },
+            onToggleSidebar: () => {
+                isSidebarOpen = !isSidebarOpen;
+                sidebar.classList.toggle('is-open', isSidebarOpen);
+            },
+            onToggleTheme: () => {
+                isDark = !isDark;
+                if (isDark) {
+                    document.documentElement.setAttribute('data-theme', 'alternate');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
+        }));
+        
+        // Navigation
+        const nav = new AppNavigation();
+        const navProps = {
+            links: [
+                { id: 'dashboard', label: 'Dashboard', icon: '📊', isActive: true, isAvailable: true },
+                { id: 'patients', label: 'Patients', icon: '👥', isActive: false, isAvailable: true },
+                { id: 'dead-link', label: 'Dead Link', icon: '💀', isActive: false, isAvailable: false }
+            ],
+            onNavigate: (id) => console.log('Navigate to', id)
+        };
+        sidebar.appendChild(nav.render(navProps));
+        
+        // Global Status
+        const status = new GlobalStatus();
+        globalStatusContainer.appendChild(status.render({
+            message: 'System running in fallback mode.',
+            type: 'warning'
+        }));
+        
+        // Content Setup
+        const pageHeader = document.createElement('div');
+        pageHeader.className = 'mf-page-header';
+        pageHeader.innerHTML = '<h1 class="mf-page-title">UI Component Library</h1>';
+        mainContent.appendChild(pageHeader);
+        
+        // Test states
+        const statesDiv = document.createElement('div');
+        statesDiv.id = 'states-container';
+        mainContent.appendChild(statesDiv);
+        
+        const loading = new LoadingState();
+        statesDiv.appendChild(loading.render({ message: 'Loading data...' }));
+        
+        const empty = new EmptyState();
+        statesDiv.appendChild(empty.render({}));
+        
+        const error = new ErrorState();
+        statesDiv.appendChild(error.render({ message: 'Network error.' }));
+        
+        const offline = new OfflineState();
+        statesDiv.appendChild(offline.render({}));
+        
+        const permission = new PermissionState();
+        statesDiv.appendChild(permission.render({}));
+        
+        const conflict = new ConflictState();
+        statesDiv.appendChild(conflict.render({}));
+        
+        // Interactions
+        const controlsDiv = document.createElement('div');
+        controlsDiv.style.display = 'flex';
+        controlsDiv.style.gap = '10px';
+        controlsDiv.style.flexWrap = 'wrap';
+        controlsDiv.style.marginTop = '20px';
+        mainContent.appendChild(controlsDiv);
+        
+        const btnToast = document.createElement('button');
+        btnToast.className = 'mf-btn mf-btn-primary';
+        btnToast.id = 'btn-toast';
+        btnToast.textContent = 'Show Toast';
+        btnToast.onclick = () => new ToastNotification().show({ message: 'Saved successfully!', type: 'success' });
+        controlsDiv.appendChild(btnToast);
+        
+        const btnModal = document.createElement('button');
+        btnModal.className = 'mf-btn mf-btn-outline';
+        btnModal.id = 'btn-modal';
+        btnModal.textContent = 'Open Modal';
+        btnModal.onclick = () => {
+            const modal = new ModalDialog();
+            modal.render({
+                title: 'Test Modal',
+                content: 'This is a focus-trapped modal.',
+                actions: [
+                    { label: 'Close', onExecute: () => modal.close() },
+                    { label: 'Save', isPrimary: true, onExecute: () => modal.close() }
+                ]
+            });
+        };
+        controlsDiv.appendChild(btnModal);
+        
+        const btnDrawer = document.createElement('button');
+        btnDrawer.className = 'mf-btn mf-btn-outline';
+        btnDrawer.id = 'btn-drawer';
+        btnDrawer.textContent = 'Open Drawer';
+        btnDrawer.onclick = () => {
+            const drawer = new Drawer();
+            drawer.render({
+                title: 'Details',
+                content: 'Drawer content goes here.'
+            });
+        };
+        controlsDiv.appendChild(btnDrawer);
+        
+        const btnConfirm = document.createElement('button');
+        btnConfirm.className = 'mf-btn mf-btn-outline';
+        btnConfirm.id = 'btn-confirm';
+        btnConfirm.textContent = 'Open Confirm';
+        btnConfirm.onclick = () => {
+            new ConfirmationDialog().show({
+                title: 'Delete Item',
+                message: 'Are you sure you want to delete this?',
+                onConfirm: () => console.log('Confirmed!')
+            });
+        };
+        controlsDiv.appendChild(btnConfirm);
+        
+        // Data Patterns
+        const dataDiv = document.createElement('div');
+        dataDiv.style.marginTop = '20px';
+        mainContent.appendChild(dataDiv);
+        
+        dataDiv.appendChild(FormFields.renderInput({
+            id: 'test-input',
+            label: 'Test Input',
+            required: true,
+            error: 'This field is required'
+        }));
+        
+        dataDiv.appendChild(StatusPrimitives.renderBadge({ status: 'success', label: 'Active' }));
+        dataDiv.appendChild(StatusPrimitives.renderBadge({ status: 'error', label: 'Failed' }));
+        
+        const table = new DataTable();
+        dataDiv.appendChild(table.render({
+            columns: [
+                { key: 'id', label: 'ID' },
+                { key: 'name', label: 'Name' }
+            ],
+            data: [
+                { id: 1, name: 'John Doe' },
+                { id: 2, name: 'Jane Doe' }
+            ]
+        }));
+        
+        // For puppeteer tests
+        window.__UI_SHELL_READY = true;
+    </script>
+</body>
+</html>

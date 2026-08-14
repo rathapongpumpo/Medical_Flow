@@ -1,0 +1,227 @@
+/* tokens.css - Material Design 3 (MD3) Design System Variables - FORMAL HOSPITAL UI */
+
+:root {
+    /* Primary: Clinical Blue */
+    --md-sys-color-primary: hsl(212, 75%, 35%);
+    --md-sys-color-on-primary: hsl(0, 0%, 100%);
+    --md-sys-color-primary-container: hsl(212, 50%, 90%);
+    --md-sys-color-on-primary-container: hsl(212, 60%, 15%);
+    
+    /* Secondary: Slate */
+    --md-sys-color-secondary: hsl(215, 15%, 45%);
+    --md-sys-color-on-secondary: hsl(0, 0%, 100%);
+    --md-sys-color-secondary-container: hsl(215, 20%, 92%);
+    --md-sys-color-on-secondary-container: hsl(215, 40%, 20%);
+    
+    /* Tertiary: Clinical Teal */
+    --md-sys-color-tertiary: hsl(180, 55%, 35%);
+    --md-sys-color-on-tertiary: hsl(0, 0%, 100%);
+    --md-sys-color-tertiary-container: hsl(180, 40%, 90%);
+    --md-sys-color-on-tertiary-container: hsl(180, 60%, 15%);
+    
+    /* Error */
+    --md-sys-color-error: hsl(0, 75%, 45%);
+    --md-sys-color-on-error: hsl(0, 0%, 100%);
+    --md-sys-color-error-container: hsl(0, 80%, 95%);
+    --md-sys-color-on-error-container: hsl(0, 60%, 15%);
+
+    /* --- THE OPERATIONAL STATE RAMP (Channel Only) --- */
+    --state-inert:  212 13% 50%;
+    --state-booked: 211 77% 36%;
+    --state-queued: 38 92% 42%;
+    --state-active: 199 89% 35%;
+    --state-done:   152 60% 32%;
+    --state-alert:  0 72% 47%;
+    
+    /* Surface & Background */
+    --md-sys-color-background: hsl(220, 15%, 98%);
+    --md-sys-color-on-background: hsl(220, 10%, 10%);
+    --md-sys-color-surface: hsl(0, 0%, 100%);
+    --md-sys-color-on-surface: hsl(220, 10%, 15%);
+    --md-sys-color-surface-variant: hsl(220, 15%, 92%);
+    --md-sys-color-on-surface-variant: hsl(220, 15%, 35%);
+    
+    /* Outlines */
+    --md-sys-color-outline: hsl(220, 15%, 55%);
+    --md-sys-color-outline-variant: hsl(220, 15%, 85%);
+    
+    /* Surface Levels */
+    --md-sys-color-surface-container-lowest: hsl(0, 0%, 100%);
+    --md-sys-color-surface-container-low: hsl(220, 15%, 98%);
+    --md-sys-color-surface-container: hsl(220, 15%, 96%);
+    --md-sys-color-surface-container-high: hsl(220, 15%, 94%);
+    --md-sys-color-surface-container-highest: hsl(220, 15%, 90%);
+
+    /* Mapping Legacy Tokens to MD3 */
+    --color-brand-600: var(--md-sys-color-primary);
+    --color-brand-700: var(--md-sys-color-on-primary-container);
+    --color-brand-100: var(--md-sys-color-primary-container);
+    --color-brand-200: var(--md-sys-color-primary-container);
+    
+    /* Bootstrap Overrides to match Formal Hospital UI */
+    --bs-primary: var(--md-sys-color-primary);
+    --bs-primary-rgb: 22, 79, 156; /* Computed from hsl(212, 75%, 35%) */
+    
+    /* Legacy state colors mapped to the Ramp (temporarily keeping names for compat) */
+    --color-danger-base: hsl(var(--state-alert));
+    --color-danger-bg: hsla(var(--state-alert) / 0.1);
+    --color-danger-text: hsl(var(--state-alert));
+    --color-success-base: hsl(var(--state-done));
+    --color-success-bg: hsla(var(--state-done) / 0.1);
+    --color-success-text: hsl(var(--state-done));
+    --color-warning-base: hsl(var(--state-queued));
+    --color-warning-bg: hsla(var(--state-queued) / 0.1);
+    --color-warning-text: hsl(var(--state-queued));
+    --color-info-base: hsl(var(--state-booked));
+    --color-info-bg: hsla(var(--state-booked) / 0.1);
+    --color-info-text: hsl(var(--state-booked));
+    
+    --bg-surface: var(--md-sys-color-surface);
+    --bg-surface-hover: var(--md-sys-color-surface-variant);
+    --bg-page: var(--md-sys-color-background);
+    --bg-body: var(--md-sys-color-background);
+    --text-primary: var(--md-sys-color-on-surface);
+    --text-secondary: var(--md-sys-color-on-surface-variant);
+    --text-tertiary: var(--md-sys-color-outline);
+    --text-inverse: var(--md-sys-color-on-primary);
+    --border-color: var(--md-sys-color-outline-variant);
+
+    /* MD3 Typography - Formal Sarabun for Thai, Inter for English/Numbers */
+    --md-sys-typescale-display-large-font: 'Sarabun', 'Inter', sans-serif;
+    --md-sys-typescale-display-large-size: 57px;
+    --md-sys-typescale-display-large-line-height: 64px;
+    
+    --md-sys-typescale-headline-large-size: 32px;
+    --md-sys-typescale-headline-large-line-height: 40px;
+    
+    --md-sys-typescale-title-large-size: 20px;
+    --md-sys-typescale-title-large-line-height: 26px;
+    --md-sys-typescale-title-large-weight: 500;
+    
+    --md-sys-typescale-title-medium-size: 15px;
+    --md-sys-typescale-title-medium-line-height: 22px;
+    --md-sys-typescale-title-medium-weight: 600;
+    
+    --md-sys-typescale-label-large-size: 13px;
+    --md-sys-typescale-label-large-line-height: 18px;
+    --md-sys-typescale-label-large-weight: 500;
+    
+    --md-sys-typescale-body-large-size: 15px;
+    --md-sys-typescale-body-large-line-height: 22px;
+    
+    --md-sys-typescale-body-medium-size: 13px;
+    --md-sys-typescale-body-medium-line-height: 18px;
+
+    /* Legacy typography aliases */
+    --font-family-sans: var(--md-sys-typescale-display-large-font);
+    --font-size-xs: 12px;
+    --font-size-sm: 13px;
+    --font-size-md: 15px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 32px;
+    --font-size-4xl: 45px;
+    --line-height-base: 1.5;
+
+    /* Elevation */
+    --md-sys-elevation-level1: 0px 1px 3px 1px rgba(0,0,0,0.08), 0px 1px 2px 0px rgba(0,0,0,0.12);
+    --md-sys-elevation-level2: 0px 2px 6px 2px rgba(0,0,0,0.08), 0px 1px 2px 0px rgba(0,0,0,0.12);
+    --md-sys-elevation-level3: 0px 4px 8px 3px rgba(0,0,0,0.08), 0px 1px 3px 0px rgba(0,0,0,0.12);
+    --md-sys-elevation-level4: 0px 6px 10px 4px rgba(0,0,0,0.08), 0px 2px 3px 0px rgba(0,0,0,0.12);
+    --md-sys-elevation-level5: 0px 8px 12px 6px rgba(0,0,0,0.08), 0px 4px 4px 0px rgba(0,0,0,0.12);
+
+    /* Legacy shadow aliases */
+    --shadow-sm: var(--md-sys-elevation-level1);
+    --shadow-md: var(--md-sys-elevation-level2);
+    --shadow-lg: var(--md-sys-elevation-level3);
+    --shadow-xl: var(--md-sys-elevation-level4);
+    --shadow-drawer: var(--md-sys-elevation-level5);
+
+    /* MD3 Shape (Border Radius) - Sharpened for Formal Medical App */
+    --md-sys-shape-corner-extra-small: 2px;
+    --md-sys-shape-corner-small: 4px;
+    --md-sys-shape-corner-medium: 6px;
+    --md-sys-shape-corner-large: 10px;
+    --md-sys-shape-corner-extra-large: 14px;
+    --md-sys-shape-corner-full: 9999px;
+
+    /* Legacy shape aliases */
+    --border-radius-sm: var(--md-sys-shape-corner-extra-small);
+    --border-radius-md: var(--md-sys-shape-corner-small);
+    --border-radius-lg: var(--md-sys-shape-corner-medium);
+    --border-radius-xl: var(--md-sys-shape-corner-large);
+    --border-radius-pill: var(--md-sys-shape-corner-full);
+    
+    --border-width-base: 1px;
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-8: 48px;
+
+    /* Layout Dimensions */
+    --sidebar-width: 240px;
+    --header-height: 52px;
+    
+    /* Transitions */
+    --transition-fast: 100ms cubic-bezier(0.2, 0, 0, 1);
+    --transition-base: 150ms cubic-bezier(0.2, 0, 0, 1);
+    --transition-bounce: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Alternate/Dark Theme (MD3 Dark) */
+[data-theme="alternate"] {
+    --md-sys-color-primary: hsl(212, 80%, 75%);
+    --md-sys-color-on-primary: hsl(212, 50%, 15%);
+    --md-sys-color-primary-container: hsl(212, 35%, 25%);
+    --md-sys-color-on-primary-container: hsl(212, 30%, 90%);
+    
+    --md-sys-color-secondary: hsl(215, 20%, 75%);
+    --md-sys-color-on-secondary: hsl(215, 30%, 15%);
+    --md-sys-color-secondary-container: hsl(215, 25%, 25%);
+    --md-sys-color-on-secondary-container: hsl(215, 20%, 90%);
+    
+    --md-sys-color-tertiary: hsl(180, 50%, 75%);
+    --md-sys-color-on-tertiary: hsl(180, 50%, 15%);
+    --md-sys-color-tertiary-container: hsl(180, 35%, 25%);
+    --md-sys-color-on-tertiary-container: hsl(180, 30%, 90%);
+    
+    --md-sys-color-error: hsl(0, 80%, 75%);
+    --md-sys-color-on-error: hsl(0, 60%, 15%);
+    --md-sys-color-error-container: hsl(0, 40%, 25%);
+    --md-sys-color-on-error-container: hsl(0, 80%, 95%);
+
+    /* Dark Mode State Ramp (Lower saturation, higher lightness for contrast) */
+    --state-inert:  212 10% 60%;
+    --state-booked: 211 60% 65%;
+    --state-queued: 38  70% 65%;
+    --state-active: 199 70% 60%;
+    --state-done:   152 40% 60%;
+    --state-alert:  0   70% 70%;
+    
+    --md-sys-color-background: hsl(220, 10%, 8%);
+    --md-sys-color-on-background: hsl(220, 10%, 90%);
+    --md-sys-color-surface: hsl(220, 10%, 12%);
+    --md-sys-color-on-surface: hsl(220, 10%, 90%);
+    --md-sys-color-surface-variant: hsl(220, 15%, 18%);
+    --md-sys-color-on-surface-variant: hsl(220, 15%, 80%);
+    
+    --md-sys-color-outline: hsl(220, 15%, 45%);
+    --md-sys-color-outline-variant: hsl(220, 15%, 25%);
+    
+    --md-sys-color-surface-container-lowest: hsl(220, 10%, 5%);
+    --md-sys-color-surface-container-low: hsl(220, 10%, 10%);
+    --md-sys-color-surface-container: hsl(220, 10%, 14%);
+    --md-sys-color-surface-container-high: hsl(220, 10%, 16%);
+    --md-sys-color-surface-container-highest: hsl(220, 10%, 20%);
+    
+    /* Legacy dark overrides */
+    --color-info-bg: hsla(var(--state-booked) / 0.1);
+    --color-info-text: hsl(var(--state-booked));
+}
+

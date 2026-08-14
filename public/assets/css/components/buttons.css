@@ -1,0 +1,138 @@
+/* buttons.css - Material Design 3 (MD3) Buttons */
+
+.mf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-5);
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    font-family: var(--md-sys-typescale-display-large-font);
+    border-radius: var(--md-sys-shape-corner-medium); /* Formal UI sharper borders */
+    border: none;
+    transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+    min-height: 40px; /* MD3 standard button height */
+    min-width: 64px;
+    gap: var(--space-2);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* State Layer - the MD3 way of handling hover/focus via opacity */
+.mf-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.mf-btn:hover:not(:disabled)::after {
+    opacity: 0.08; /* MD3 hover state layer */
+}
+
+.mf-btn:focus-visible::after {
+    opacity: 0.12; /* MD3 focus state layer */
+}
+
+.mf-btn:active:not(:disabled)::after {
+    opacity: 0.12; /* MD3 pressed state layer */
+}
+
+.mf-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* MD3 Filled Button (Primary) */
+.mf-btn-primary {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+.mf-btn-primary:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+}
+
+/* MD3 Tonal Button (often used as secondary) */
+.mf-btn-secondary {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+.mf-btn-secondary:focus-visible {
+    outline: 2px solid var(--md-sys-color-secondary-container);
+    outline-offset: 2px;
+}
+
+/* MD3 Outlined Button */
+.mf-btn-outline {
+    background-color: transparent;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
+}
+.mf-btn-outline:hover:not(:disabled) {
+    border-color: var(--md-sys-color-primary);
+    background-color: transparent;
+}
+.mf-btn-outline:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+}
+
+/* Danger Button */
+.mf-btn-danger {
+    background-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-on-error);
+}
+.mf-btn-danger:focus-visible {
+    outline: 2px solid var(--md-sys-color-error);
+    outline-offset: 2px;
+}
+
+/* Danger Outline */
+.mf-btn-danger-outline {
+    background-color: transparent;
+    color: var(--md-sys-color-error);
+    border: 1px solid var(--md-sys-color-error);
+}
+.mf-btn-danger-outline:focus-visible {
+    outline: 2px solid var(--md-sys-color-error);
+    outline-offset: 2px;
+}
+
+/* Sizes */
+.mf-btn-sm {
+    min-height: 32px;
+    padding: 0 var(--space-3);
+    font-size: 12px; /* Smaller label for small button */
+}
+
+.mf-btn-lg {
+    min-height: 48px;
+    padding: 0 var(--space-6);
+    font-size: var(--md-sys-typescale-title-small-size);
+}
+
+/* Disabled State - MD3 uses 38% opacity on container and text */
+.mf-btn:disabled {
+    background-color: hsla(220, 10%, 50%, 0.12) !important;
+    color: hsla(220, 10%, 50%, 0.38) !important;
+    border-color: transparent !important;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.mf-btn:disabled::after {
+    display: none;
+}
+.mf-btn-outline:disabled {
+    border-color: hsla(220, 10%, 50%, 0.12) !important;
+    background-color: transparent !important;
+}

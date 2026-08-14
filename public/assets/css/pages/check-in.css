@@ -1,0 +1,14 @@
+/* check-in.css */
+
+.mf-check-in-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mf-patient-search-result {
+    border: var(--border-width-base) solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    background-color: var(--bg-surface);
+}

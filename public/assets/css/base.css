@@ -1,0 +1,65 @@
+/* base.css — MD3 Base Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-surface);
+    font-family: var(--md-sys-typescale-display-large-font);
+    font-size: var(--md-sys-typescale-body-large-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0; padding: 0;
+}
+
+a {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    transition: color 150ms ease;
+}
+a:hover { color: var(--md-sys-color-on-primary-container); }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--md-sys-typescale-display-large-font);
+    color: var(--md-sys-color-on-surface);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Bootstrap overrides */
+:root {
+    --bs-body-font-family: var(--md-sys-typescale-display-large-font);
+    --bs-body-font-size: var(--md-sys-typescale-body-large-size);
+    --bs-body-color: var(--md-sys-color-on-surface);
+    --bs-body-bg: var(--md-sys-color-background);
+    --bs-border-color: var(--md-sys-color-outline-variant);
+    --bs-border-radius: var(--md-sys-shape-corner-small);
+}
+
+/* Focus ring — MD3 */
+*:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-full);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--md-sys-color-outline);
+}

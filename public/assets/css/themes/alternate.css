@@ -1,0 +1,35 @@
+/* themes/alternate.css - Alternate Dark/High-Contrast Theme Implementation */
+
+html[data-theme="alternate"] {
+    /* Color Palette - Alternate Dark Mode */
+    --color-brand-50: #2c333a;
+    --color-brand-100: #333c44;
+    --color-brand-200: #3d4751;
+    --color-brand-300: #4a5662;
+    --color-brand-400: #5c6b79;
+    --color-brand-500: #7d8b99;
+    --color-brand-600: #a7b1bc;
+    --color-brand-700: #cbd1d8;
+    --color-brand-800: #e4e7ec;
+    --color-brand-900: #f5f7fa;
+
+    /* Backgrounds */
+    --bg-page: #1a1e23;
+    --bg-surface: #22272d;
+    --bg-surface-hover: var(--color-brand-50);
+    
+    /* Text */
+    --text-primary: #e4e7ec;
+    --text-secondary: #cbd1d8;
+    --text-tertiary: #a7b1bc;
+    --text-inverse: #1a1e23;
+
+    /* Borders */
+    --border-color: #333c44;
+
+    /* Semantic adjustments for dark mode readability if needed */
+    --color-success-light: #1b451d;
+    --color-warning-light: #6b3100;
+    --color-danger-light: #5c1414;
+    --color-info-light: #013f63;
+}

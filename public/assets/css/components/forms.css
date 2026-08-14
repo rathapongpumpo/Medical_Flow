@@ -1,0 +1,91 @@
+/* forms.css - Material Design 3 (MD3) Text Fields */
+
+.mf-form-group {
+    margin-bottom: var(--space-5);
+    position: relative;
+}
+
+.mf-form-label {
+    display: inline-block;
+    margin-bottom: var(--space-1);
+    font-size: var(--md-sys-typescale-body-small-size);
+    font-weight: var(--md-sys-typescale-body-medium-weight);
+    color: var(--md-sys-color-on-surface-variant);
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.mf-input {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--md-sys-typescale-body-large-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    color: var(--md-sys-color-on-surface);
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    transition: border-color var(--transition-fast), border-width var(--transition-fast), padding var(--transition-fast);
+    min-height: 56px; /* MD3 standard text field height */
+    box-sizing: border-box;
+}
+
+.mf-input::placeholder {
+    color: var(--md-sys-color-on-surface-variant);
+    opacity: 0.6;
+}
+
+.mf-input:hover:not(:disabled) {
+    border-color: var(--md-sys-color-on-surface);
+}
+
+.mf-input:focus {
+    border-color: var(--md-sys-color-primary);
+    border-width: 2px;
+    padding: calc(var(--space-3) - 1px) calc(var(--space-4) - 1px); /* Prevent layout shift when border gets thicker */
+    outline: none;
+}
+
+.mf-input:focus + .mf-form-label, 
+.mf-input:focus-within + .mf-form-label {
+    color: var(--md-sys-color-primary);
+}
+
+.mf-input:disabled {
+    border-color: hsla(220, 10%, 50%, 0.12);
+    color: hsla(220, 10%, 50%, 0.38);
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+/* Select inputs */
+select.mf-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+    background-size: 16px;
+    padding-right: var(--space-8);
+}
+
+[data-theme="alternate"] select.mf-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-theme="alternate"] .mf-input::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.7; }
+
+/* --- Checkboxes & Radios (MD3) --- */
+input[type="checkbox"], input[type="radio"] { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; border: 2px solid var(--md-sys-color-on-surface-variant); display: inline-grid; place-content: center; margin: 0; cursor: pointer; transition: 0.2s ease-in-out; }
+input[type="checkbox"] { border-radius: 2px; }
+input[type="radio"] { border-radius: 50%; }
+input[type="checkbox"]::before, input[type="radio"]::before { content: ""; width: 10px; height: 10px; transform: scale(0); transition: 120ms transform ease-in-out; }
+input[type="checkbox"]::before { background-color: var(--md-sys-color-on-primary); transform-origin: bottom left; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); }
+input[type="radio"]::before { background-color: var(--md-sys-color-primary); border-radius: 50%; }
+input[type="checkbox"]:checked, input[type="radio"]:checked { border-color: var(--md-sys-color-primary); }
+input[type="checkbox"]:checked { background-color: var(--md-sys-color-primary); }
+input[type="checkbox"]:checked::before, input[type="radio"]:checked::before { transform: scale(1); }
+
+
+/* --- Icon Buttons (MD3) --- */
+.mf-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--md-sys-color-on-surface-variant); cursor: pointer; transition: background-color 200ms ease; font-size: 20px; }
+.mf-icon-btn:hover { background-color: var(--md-sys-color-surface-container-highest); color: var(--md-sys-color-on-surface); }
+

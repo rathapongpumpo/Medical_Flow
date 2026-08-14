@@ -1,0 +1,7 @@
+/* themes/default.css - Default Theme Implementation */
+
+/* Default theme is implicitly defined in tokens.css, but we can override it here if needed or just use this file to explicitly declare data-theme="default" */
+
+html[data-theme="default"] {
+    /* No overrides needed, uses root tokens */
+}
