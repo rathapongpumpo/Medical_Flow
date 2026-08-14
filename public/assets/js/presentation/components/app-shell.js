@@ -32,7 +32,7 @@ export class AppHeader {
         
         const brand = document.createElement('div');
         brand.className = 'mf-header-brand';
-        brand.innerHTML = '<span class="mf-header-brand-icon"><i class="bi bi-hospital"></i></span>' + (props.title || 'Medical Flow');
+        brand.innerHTML = '<img src="/assets/favicon.svg" alt="Medical Flow" style="width: 28px; height: 28px; margin-right: 12px; vertical-align: middle;">' + (props.title || 'Medical Flow');
         
         leftArea.appendChild(mobileToggle);
         leftArea.appendChild(brand);
