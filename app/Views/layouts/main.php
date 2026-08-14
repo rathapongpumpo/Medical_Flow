@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageMetadata['title'] ?? 'Medical Flow') ?></title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     
     <!-- Google Fonts: Roboto (MD3 standard) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
